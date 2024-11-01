@@ -15,13 +15,14 @@ public class GraphicInterface extends JFrame{
     
     public GraphicInterface(int capacity) {
         setTitle("Simulador de Substituição de Páginas");
-        setSize(400, 500);
+        setSize(600, 600);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
 
         //Algoritmos disponiveis para a paginação:
         algorithms = new HashMap<>();
         algorithms.put("FIFO (First In First Out)", new FIFO(capacity));
+        algorithms.put("LRU", new LRU(capacity));
 
         algorithmSelector = new JComboBox<>(algorithms.keySet().toArray(new String[0]));
         algorithmSelector.addActionListener(e -> selectAlgorithm()); //Implementar
@@ -68,8 +69,9 @@ public class GraphicInterface extends JFrame{
     private void updateMemoryDisplay(boolean pageFault) {
         StringBuilder sb = new StringBuilder();
         sb.append("Memoria: ").append(algorithm.getMemory()).append("\n");
-        sb.append("Pagina Executada: ").append(pageFault ? "Sim" : "Nao").append("\n");
+        sb.append("Page Fault: ").append(pageFault ? "Sim" : "Nao").append("\n");
         memoryDisplay.setText(sb.toString());
     }
+    
     
 }

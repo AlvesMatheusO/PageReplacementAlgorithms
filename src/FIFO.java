@@ -23,6 +23,7 @@ public class FIFO  implements PageReplacementAlgorithm {
         return true;
     }
 
+    @Override
     public ArrayList<Integer> getMemory() {
         return memory;
     }
