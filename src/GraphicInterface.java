@@ -23,6 +23,8 @@ public class GraphicInterface extends JFrame{
         algorithms = new HashMap<>();
         algorithms.put("FIFO (First In First Out)", new FIFO(capacity));
         algorithms.put("LRU", new LRU(capacity));
+        algorithms.put("CLOCK", new CLOCK(capacity));
+        algorithms.put("NFU", new NFU(capacity));
 
         algorithmSelector = new JComboBox<>(algorithms.keySet().toArray(new String[0]));
         algorithmSelector.addActionListener(e -> selectAlgorithm()); //Implementar
